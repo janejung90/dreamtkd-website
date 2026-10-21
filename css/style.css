@@ -1,0 +1,53 @@
+/* Dream Taekwondo — shared styles. Most layout lives inline in each page;
+   this file holds base rules, interactive states and phone-size overrides. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #FFFFFF; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; }
+a { color: #C8102E; }
+a:hover { color: #8E0B20; }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid #FFB800; outline-offset: 2px;
+}
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ---------- Home hero slideshow ---------- */
+.hero .slide { opacity: 0; transition: opacity 1.2s ease; }
+.hero .slide.is-active { opacity: 1; }
+.slide-dot { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 2px solid #FFFFFF; background: transparent; cursor: pointer; }
+.slide-dot.is-active { background: #FFFFFF; }
+.slide-toggle { width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.slide-toggle svg { fill: #FFFFFF; }
+.slide-toggle .icon-play { display: none; }
+.slide-toggle.is-paused .icon-play { display: block; }
+.slide-toggle.is-paused .icon-pause { display: none; }
+
+/* ---------- Forms ---------- */
+.lead-form input, .lead-form select { font-family: 'Barlow', sans-serif; color: #111111; background: #FFFFFF; }
+.form-status:empty { display: none; }
+.form-status { font-weight: 600; }
+.form-status.is-ok { color: #2E8B3E; }
+.form-status.is-error { color: #FF7A8A; }
+.lead-form button[disabled] { opacity: 0.6; cursor: wait; }
+
+/* ---------- Study guide accordion ---------- */
+details.belt summary::-webkit-details-marker { display: none; }
+details.belt .belt-icon::before { content: "+"; }
+details.belt[open] .belt-icon::before { content: "\2212"; }
+details.belt summary:hover { background: #F7F7F7; }
+
+/* ---------- Phones & small tablets ---------- */
+@media (max-width: 760px) {
+  h1 { font-size: 56px !important; line-height: 1 !important; }
+  h2 { font-size: 40px !important; }
+  .site-header nav { gap: 14px !important; font-size: 14px !important; width: 100%; order: 3; }
+  .hide-sm { display: none !important; }
+  .hero { min-height: 620px !important; }
+  .hero-shade { background: linear-gradient(180deg, rgba(17,17,17,0.94) 0%, rgba(17,17,17,0.86) 55%, rgba(17,17,17,0.35) 80%, rgba(17,17,17,0.1) 100%) !important; }
+  .party-hero-img { width: 100% !important; opacity: 0.55; }
+  .party-hero-shade { background: linear-gradient(180deg, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.7) 100%) !important; }
+  .party-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  section { scroll-margin-top: 0; }
+}

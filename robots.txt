@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /students.html
+Sitemap: https://www.dreamtkd.com/sitemap.xml
