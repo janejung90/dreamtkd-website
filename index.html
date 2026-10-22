@@ -24,7 +24,8 @@
 <img src="images/logo.png" alt="Dream Taekwondo logo" style="display: block; width: 60px; height: 60px;">
 <span style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px;">Dream Taekwondo</span>
 </a>
-<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 24px; font-weight: 600; font-size: 15px;">
+<button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+<nav id="site-nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 24px; font-weight: 600; font-size: 15px;">
 <a href="#programs" style="color: #FFFFFF; text-decoration: none;">Programs</a>
 <a href="schedule.html" style="color: #FFFFFF; text-decoration: none;">Schedule</a>
 <a href="#about" style="color: #FFFFFF; text-decoration: none;">About</a>
@@ -63,7 +64,7 @@
 </div>
 </section>
 
-<section style="background: #C8102E; color: #FFFFFF;">
+<section class="trust-bar" style="background: #C8102E; color: #FFFFFF;">
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; font-weight: 700; font-size: 17px;">
 <span>★★★★★ 5.0 on Google · 161 reviews</span>
 <span>7th Degree Black Belt Master</span>
@@ -125,7 +126,7 @@
 <div style="margin-top: 40px; border: 2px solid #111111; padding: 28px;">
 <h3 style="margin: 0 0 6px; font-family: 'Bebas Neue', sans-serif; font-size: 32px; font-weight: 400;">The Kids Taekwondo path</h3>
 <p style="margin: 0 0 20px; color: #444444; line-height: 1.5;">Every child starts as a beginner and moves up to the next class as they earn new belts.</p>
-<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+<ol class="belt-path" style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
 <li style="background: #FFE7D1; border-top: 6px solid #E8731A; padding: 14px;"><p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #444444;">STEP 1 · BEGINNER</p><p style="margin: 4px 0 0; font-weight: 700; font-size: 18px;">White to Orange</p></li>
 <li style="background: #DFF2E1; border-top: 6px solid #2E8B3E; padding: 14px;"><p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #444444;">STEP 2 · INTERMEDIATE</p><p style="margin: 4px 0 0; font-weight: 700; font-size: 18px;">Green to High Purple</p></li>
 <li style="background: #FBDDE0; border-top: 6px solid #C8102E; padding: 14px;"><p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #444444;">STEP 3 · ADVANCED</p><p style="margin: 4px 0 0; font-weight: 700; font-size: 18px;">Red to Black</p></li>
@@ -151,7 +152,7 @@
 <section id="about" style="background: #111111; color: #FFFFFF;">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
 <div style="flex: 1 1 360px; min-width: 0; display: flex; justify-content: center;">
-<img src="images/master-lee.jpg" alt="Master Inho Lee in his Dream Taekwondo uniform at the studio" style="display: block; width: 100%; max-width: 400px; height: auto;">
+<img class="coach-photo" src="images/master-lee.jpg" alt="Master Inho Lee in his Dream Taekwondo uniform at the studio" style="display: block; width: 100%; max-width: 400px; height: auto;">
 </div>
 <div style="flex: 1 1 480px; min-width: 0;">
 <p style="margin: 0 0 8px; color: #FF5A6E; font-weight: 700; letter-spacing: 3px; font-size: 14px;">YOUR INSTRUCTOR</p>
@@ -171,7 +172,7 @@
 
 <section style="max-width: 1200px; margin: 0 auto; padding: 88px 24px;">
 <h2 style="margin: 0 0 32px; font-family: 'Bebas Neue', sans-serif; font-size: 56px; font-weight: 400; text-align: center;">5 principles we teach every class</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; text-align: center;">
+<div class="principles" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; text-align: center;">
 <div style="border: 2px solid #111111; padding: 28px 12px; font-family: 'Bebas Neue', sans-serif; font-size: 30px;">Respect</div>
 <div style="border: 2px solid #111111; padding: 28px 12px; font-family: 'Bebas Neue', sans-serif; font-size: 30px;">Humility</div>
 <div style="border: 2px solid #111111; padding: 28px 12px; font-family: 'Bebas Neue', sans-serif; font-size: 30px;">Perseverance</div>
@@ -183,7 +184,7 @@
 <section style="background: #F4F4F4;">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px;">
 <h2 style="margin: 0 0 32px; font-family: 'Bebas Neue', sans-serif; font-size: 56px; font-weight: 400;">What parents say</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+<div class="reviews" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
 <figure style="margin: 0; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 16px;"><span style="color: #C8102E; font-size: 20px;" aria-label="5 stars">★★★★★</span><blockquote style="margin: 0; font-size: 17px; line-height: 1.6;">“It’s always clean, welcoming, and the kids are learning much more than just Taekwondo, especially respect, discipline, and confidence. Master Lee is great with the kids and is a really positive role model… New students are made to feel comfortable right away.”</blockquote><figcaption style="font-weight: 700;">Paul W., Google review</figcaption></figure>
 <figure style="margin: 0; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 16px;"><span style="color: #C8102E; font-size: 20px;" aria-label="5 stars">★★★★★</span><blockquote style="margin: 0; font-size: 17px; line-height: 1.6;">“After trying many schools, we decided Dream Taekwondo is the most authentic martial arts school in the area and Master Lee is exceptional. So kind and attentive towards the children. We’re happy with our decision.”</blockquote><figcaption style="font-weight: 700;">Fulya D., Google review</figcaption></figure>
 <figure style="margin: 0; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 16px;"><span style="color: #C8102E; font-size: 20px;" aria-label="5 stars">★★★★★</span><blockquote style="margin: 0; font-size: 17px; line-height: 1.6;">“Our daughter recently started Taekwondo with Master Lee and we couldn’t be happier with his instruction! All around we have had such a positive experience and we couldn’t be happier to see her progress.”</blockquote><figcaption style="font-weight: 700;">Jacqueline T., Google review</figcaption></figure>

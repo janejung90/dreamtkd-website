@@ -38,16 +38,75 @@ details.belt .belt-icon::before { content: "+"; }
 details.belt[open] .belt-icon::before { content: "\2212"; }
 details.belt summary:hover { background: #F7F7F7; }
 
-/* ---------- Phones & small tablets ---------- */
+/* ---------- Mobile menu button (hidden on desktop) ---------- */
+.menu-toggle { display: none; width: 44px; height: 44px; padding: 10px 9px; border: 1px solid #FFFFFF; background: transparent; cursor: pointer; flex-direction: column; justify-content: space-between; }
+.menu-toggle span { display: block; height: 2px; background: #FFFFFF; transition: transform 0.2s ease, opacity 0.2s ease; }
+.site-header.is-open .menu-toggle span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.site-header.is-open .menu-toggle span:nth-child(2) { opacity: 0; }
+.site-header.is-open .menu-toggle span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+/* ---------- Phones & small tablets: lighter, less crowded layout ---------- */
 @media (max-width: 760px) {
-  h1 { font-size: 56px !important; line-height: 1 !important; }
-  h2 { font-size: 40px !important; }
-  .site-header nav { gap: 14px !important; font-size: 14px !important; width: 100%; order: 3; }
+  /* Type scale */
+  h1 { font-size: 48px !important; line-height: 1 !important; }
+  h2 { font-size: 34px !important; margin-bottom: 16px !important; }
+  h3 { font-size: 24px !important; }
+
+  /* Header: logo + Free Trial + menu button; links open from the button */
+  .site-header > div { padding: 10px 16px !important; gap: 10px !important; flex-wrap: wrap !important; }
+  .site-header a img { width: 44px !important; height: 44px !important; }
+  .site-header a span { font-size: 22px !important; }
+  .site-header > div > div { order: 2; margin-left: auto; }
+  .site-header > div > div a { padding: 10px 12px !important; font-size: 14px !important; }
+  .menu-toggle { display: flex; order: 3; }
+  .site-header nav { display: none !important; order: 4; width: 100%; flex-direction: column; gap: 0 !important; padding: 4px 0 8px; font-size: 17px !important; }
+  .site-header.is-open nav { display: flex !important; }
+  .site-header nav a { padding: 12px 0; border-top: 1px solid #333333; }
   .hide-sm { display: none !important; }
-  .hero { min-height: 620px !important; }
+
+  /* More breathing room, less padding */
+  [style*="padding: 88px 24px"] { padding: 48px 20px !important; }
+  [style*="padding: 72px 24px"] { padding: 44px 20px !important; }
+  [style*="padding: 56px 24px"] { padding: 36px 20px !important; }
+  [style*="padding: 88px 24px 40px"] { padding: 48px 20px 24px !important; }
+  [style*="padding: 48px 24px 88px"] { padding: 24px 20px 44px !important; }
+
+  /* Home hero */
+  .hero { min-height: 560px !important; }
   .hero-shade { background: linear-gradient(180deg, rgba(17,17,17,0.94) 0%, rgba(17,17,17,0.86) 55%, rgba(17,17,17,0.35) 80%, rgba(17,17,17,0.1) 100%) !important; }
+  .hero p { font-size: 16px !important; }
+  .hero a { padding: 14px 18px !important; font-size: 16px !important; }
+
+  /* Trust bar: compact 2 x 2 */
+  .trust-bar > div { display: grid !important; grid-template-columns: 1fr 1fr; gap: 8px 14px !important; padding: 14px 20px !important; font-size: 13px !important; }
+
+  /* Program cards and reviews: swipe sideways instead of a long stack */
+  #programs, .reviews { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 20px; gap: 14px !important; margin: 0 -20px; padding: 0 20px 10px; scrollbar-width: none; }
+  #programs::-webkit-scrollbar, .reviews::-webkit-scrollbar { display: none; }
+  #programs > article { flex: 0 0 78%; scroll-snap-align: start; }
+  #programs img { height: 130px !important; }
+  #programs article > div { padding: 18px !important; gap: 8px !important; }
+  .reviews > figure { flex: 0 0 82%; scroll-snap-align: start; padding: 20px !important; }
+  .reviews blockquote { font-size: 15px !important; }
+
+  /* Belt path: 2 x 2 */
+  .belt-path { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+  .belt-path li { padding: 10px !important; }
+  .belt-path li p:last-child { font-size: 15px !important; }
+
+  /* Master Lee: smaller photo, compact credentials */
+  .coach-photo { max-width: 220px !important; margin: 0 auto; }
+  #about [style*="gap: 56px"] { gap: 28px !important; }
+  #about ul { font-size: 14px !important; gap: 10px !important; }
+
+  /* 5 principles: small tags instead of big boxes */
+  .principles { display: flex !important; flex-wrap: wrap; justify-content: center; gap: 8px !important; }
+  .principles > div { padding: 8px 14px !important; font-size: 20px !important; }
+
+  /* Birthday party page */
+  .party-hero { min-height: 480px !important; }
   .party-hero-img { width: 100% !important; opacity: 0.55; }
   .party-hero-shade { background: linear-gradient(180deg, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.7) 100%) !important; }
   .party-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  section { scroll-margin-top: 0; }
+  .party-gallery img { height: 130px !important; }
 }

@@ -1,5 +1,19 @@
 // Dream Taekwondo — site scripts (slideshow + request forms)
 (function () {
+  // ----- Mobile menu button -----
+  var header = document.querySelector('.site-header');
+  var menuBtn = document.querySelector('.menu-toggle');
+  if (header && menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      var open = header.classList.toggle('is-open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    header.querySelectorAll('nav a').forEach(function (a) {
+      a.addEventListener('click', function () { header.classList.remove('is-open'); menuBtn.setAttribute('aria-expanded', 'false'); });
+    });
+  }
+
   // ----- Home hero slideshow: photos fade every 6s, message stays put -----
   var hero = document.querySelector('.hero');
   if (hero) {
