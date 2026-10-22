@@ -110,3 +110,13 @@ details.belt summary:hover { background: #F7F7F7; }
   .party-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
   .party-gallery img { height: 130px !important; }
 }
+
+/* Hero headline: centred; forced line break on phones only */
+.br-sm { display: none; }
+@media (max-width: 760px) {
+  .br-sm { display: inline; }
+  .hero-copy h1 { font-size: 72px !important; line-height: 0.92 !important; }
+}
+@media (max-width: 760px) {
+  .hero-copy > div > p:first-child { letter-spacing: 1.5px !important; font-size: 12px !important; }
+}
