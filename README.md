@@ -7,12 +7,12 @@ Static website for **Dream Taekwondo**, 518A Larkfield Rd., East Northport, NY �
 |---|---|
 | `index.html` | Home (photo slideshow, programs, Master Lee, reviews, free trial form) |
 | `schedule.html` | Weekly class schedule |
-| `parties.html` | Birthday parties (package, price, request form) |
+| `parties.html` | Birthday parties (package, request form — pricing shared on request) |
 | `students.html` | Students & Families — belt test study guides behind a family password |
 
 ## Common edits
 - **Class times:** edit the table in `schedule.html`.
-- **Party price / package:** edit the "Party Package" card in `parties.html`.
+- **Party package:** edit the "Party Package" card in `parties.html`. Pricing is not shown on the site; it is shared when parents send a request.
 - **Family password:** change `FAMILY_PASSWORD` in `js/students.js` (lowercase). This only hides the page from casual visitors; it is not real security.
 - **Photos:** replace files in `images/` with the same file name.
 
