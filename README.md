@@ -18,7 +18,7 @@ Static website for **Dream Taekwondo**, 518A Larkfield Rd., East Northport, NY â
 
 ## Forms
 The free trial and party forms send email through [Web3Forms](https://web3forms.com).
-Replace `YOUR_WEB3FORMS_ACCESS_KEY` in `index.html` and `parties.html` with the access key for usdreamtkd@gmail.com.
+Forms are connected to Web3Forms (key registered to usdreamtkd@gmail.com). To change the key, edit the `access_key` value in `index.html` and `parties.html`.
 Until then, the forms show a message asking visitors to call.
 
 ## Old Wix addresses
