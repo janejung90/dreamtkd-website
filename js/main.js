@@ -96,18 +96,24 @@
   var URL = 'https://dream-tkd.web.app/';
   var timer = null, ready = false;
   function reset() { if (timer) clearTimeout(timer); timer = null; ready = false; el.style.color = ''; }
-  el.addEventListener('pointerdown', function () {
+  function down(e) {
+    if (e.type === 'touchstart') e.preventDefault(); // stop iPhone text-selection / magnifier
     reset();
     timer = setTimeout(function () { ready = true; el.style.color = '#C8102E'; }, 2000);
-  });
-  el.addEventListener('pointerup', function () {
+  }
+  function up(e) {
     var go = ready;
     reset();
-    if (go) {
-      var w = window.open(URL, '_blank');
-      if (w) { w.opener = null; } else { window.location.href = URL; } // popup blocked -> open here instead
-    }
-  });
-  ['pointerleave', 'pointercancel'].forEach(function (t) { el.addEventListener(t, reset); });
+    if (!go) return;
+    if (e.type === 'touchend') e.preventDefault();
+    var w = window.open(URL, '_blank');
+    if (w) { w.opener = null; } else { window.location.href = URL; } // popup blocked -> open here
+  }
+  el.addEventListener('touchstart', down, { passive: false });
+  el.addEventListener('touchend', up, { passive: false });
+  el.addEventListener('touchcancel', reset);
+  el.addEventListener('mousedown', down);
+  el.addEventListener('mouseup', up);
+  el.addEventListener('mouseleave', reset);
   el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 })();
