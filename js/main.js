@@ -61,7 +61,7 @@
       var key = form.querySelector('input[name="access_key"]').value;
       if (!key || key.indexOf('YOUR_') === 0) {
         status.className = 'form-status is-error';
-        status.textContent = 'Online requests are not connected yet. Please call us at 631-368-7458.';
+        status.textContent = 'Online requests are not connected yet. Please email us at usdreamtkd@gmail.com.';
         return;
       }
       btn.disabled = true;
@@ -80,7 +80,7 @@
         })
         .catch(function () {
           status.className = 'form-status is-error';
-          status.textContent = 'Sorry, something went wrong. Please call us at 631-368-7458.';
+          status.textContent = 'Sorry, something went wrong. Please email us at usdreamtkd@gmail.com.';
         })
         .finally(function () { btn.disabled = false; });
     });
