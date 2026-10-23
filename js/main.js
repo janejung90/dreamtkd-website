@@ -88,15 +88,26 @@
 })();
 
 
-// Hidden staff shortcut: tap the © in the footer 5 times quickly -> studio dashboard
+// Hidden staff shortcut: press and hold the © in the footer for 2 seconds.
+// When it turns red, let go -> the studio dashboard opens in a new tab.
 (function () {
   var el = document.querySelector('.admin-tap');
   if (!el) return;
-  var taps = 0, timer = null;
-  el.addEventListener('click', function () {
-    taps++;
-    clearTimeout(timer);
-    timer = setTimeout(function () { taps = 0; }, 2000);
-    if (taps >= 5) { taps = 0; window.location.href = 'https://dream-tkd.web.app/'; }
+  var URL = 'https://dream-tkd.web.app/';
+  var timer = null, ready = false;
+  function reset() { if (timer) clearTimeout(timer); timer = null; ready = false; el.style.color = ''; }
+  el.addEventListener('pointerdown', function () {
+    reset();
+    timer = setTimeout(function () { ready = true; el.style.color = '#C8102E'; }, 2000);
   });
+  el.addEventListener('pointerup', function () {
+    var go = ready;
+    reset();
+    if (go) {
+      var w = window.open(URL, '_blank');
+      if (w) { w.opener = null; } else { window.location.href = URL; } // popup blocked -> open here instead
+    }
+  });
+  ['pointerleave', 'pointercancel'].forEach(function (t) { el.addEventListener(t, reset); });
+  el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 })();
