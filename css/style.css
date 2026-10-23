@@ -120,3 +120,8 @@ details.belt summary:hover { background: #F7F7F7; }
 @media (max-width: 760px) {
   .hero-copy > div > p:first-child { letter-spacing: 1.5px !important; font-size: 12px !important; }
 }
+@media (max-width: 760px) {
+  .hero-eyebrow { letter-spacing: 2px !important; font-size: 12px !important; gap: 10px !important; }
+  .hero-eyebrow span { width: 20px !important; }
+  .hero-sub .br-lg { display: none; }
+}
