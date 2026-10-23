@@ -86,3 +86,18 @@
     });
   });
 })();
+
+// Party date: Saturdays only
+(function () {
+  var d = document.getElementById('party-date');
+  if (!d) return;
+  var t = new Date(); t.setDate(t.getDate() + 1);
+  d.min = t.toISOString().slice(0, 10);
+  function check() {
+    if (!d.value) { d.setCustomValidity(''); return; }
+    var day = new Date(d.value + 'T12:00:00').getDay();
+    d.setCustomValidity(day === 6 ? '' : 'Parties are on Saturdays only. Please pick a Saturday.');
+  }
+  d.addEventListener('input', function () { check(); if (d.validationMessage) d.reportValidity(); });
+  d.form.addEventListener('submit', check, true);
+})();
