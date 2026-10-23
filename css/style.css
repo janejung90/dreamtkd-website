@@ -125,3 +125,6 @@ details.belt summary:hover { background: #F7F7F7; }
   .hero-eyebrow span { width: 20px !important; }
   .hero-sub .br-lg { display: none; }
 }
+
+/* Footer staff shortcut: no text selection / copy menu on long press */
+.admin-row, .admin-row * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
