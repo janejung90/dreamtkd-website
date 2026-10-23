@@ -87,17 +87,3 @@
   });
 })();
 
-// Party date: dropdown of upcoming Saturdays only (next ~6 months)
-(function () {
-  var sel = document.getElementById('party-date');
-  if (!sel) return;
-  var d = new Date(); d.setHours(12, 0, 0, 0);
-  d.setDate(d.getDate() + 7); d.setDate(d.getDate() + (6 - d.getDay() + 7) % 7); // first Saturday at least a week away
-  var fmt = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
-  for (var i = 0; i < 26; i++) {
-    var o = document.createElement('option');
-    o.textContent = o.value = d.toLocaleDateString('en-US', fmt);
-    sel.appendChild(o);
-    d.setDate(d.getDate() + 7);
-  }
-})();
