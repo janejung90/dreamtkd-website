@@ -87,17 +87,17 @@
   });
 })();
 
-// Party date: Saturdays only
+// Party date: dropdown of upcoming Saturdays only (next ~6 months)
 (function () {
-  var d = document.getElementById('party-date');
-  if (!d) return;
-  var t = new Date(); t.setDate(t.getDate() + 1);
-  d.min = t.toISOString().slice(0, 10);
-  function check() {
-    if (!d.value) { d.setCustomValidity(''); return; }
-    var day = new Date(d.value + 'T12:00:00').getDay();
-    d.setCustomValidity(day === 6 ? '' : 'Parties are on Saturdays only. Please pick a Saturday.');
+  var sel = document.getElementById('party-date');
+  if (!sel) return;
+  var d = new Date(); d.setHours(12, 0, 0, 0);
+  d.setDate(d.getDate() + 7); d.setDate(d.getDate() + (6 - d.getDay() + 7) % 7); // first Saturday at least a week away
+  var fmt = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+  for (var i = 0; i < 26; i++) {
+    var o = document.createElement('option');
+    o.textContent = o.value = d.toLocaleDateString('en-US', fmt);
+    sel.appendChild(o);
+    d.setDate(d.getDate() + 7);
   }
-  d.addEventListener('input', function () { check(); if (d.validationMessage) d.reportValidity(); });
-  d.form.addEventListener('submit', check, true);
 })();
