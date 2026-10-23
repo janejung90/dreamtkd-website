@@ -88,7 +88,7 @@
 })();
 
 
-// Hidden staff shortcut: press and hold the © in the footer for 2 seconds.
+// Hidden staff shortcut: press and hold "© 2026 Dream Taekwondo" in the footer for 2 seconds.
 // When it turns red, let go -> the studio dashboard opens in a new tab.
 (function () {
   var el = document.querySelector('.admin-tap');
