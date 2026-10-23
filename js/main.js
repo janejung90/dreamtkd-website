@@ -87,3 +87,16 @@
   });
 })();
 
+
+// Hidden staff shortcut: tap the © in the footer 5 times quickly -> studio dashboard
+(function () {
+  var el = document.querySelector('.admin-tap');
+  if (!el) return;
+  var taps = 0, timer = null;
+  el.addEventListener('click', function () {
+    taps++;
+    clearTimeout(timer);
+    timer = setTimeout(function () { taps = 0; }, 2000);
+    if (taps >= 5) { taps = 0; window.location.href = 'https://dream-tkd.web.app/'; }
+  });
+})();
