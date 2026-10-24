@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /students.html
 Disallow: /admin/
+Disallow: /study-guides/
 
 Sitemap: https://www.dreamtkd.com/sitemap.xml
