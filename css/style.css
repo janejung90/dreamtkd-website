@@ -134,3 +134,13 @@ details.belt summary:hover { background: #F7F7F7; }
   .cal-month { display: none !important; }
   .cal-agenda { display: block !important; }
 }
+
+/* Nav item shown only in the phone menu (desktop has the Email Us button) */
+.show-sm { display: none !important; }
+@media (max-width: 760px) { .site-header.is-open .show-sm { display: block !important; } }
+
+/* Laptops / tablets: tighten the header so it stays on one line */
+@media (min-width: 761px) and (max-width: 1180px) {
+  .site-header nav { gap: 14px !important; font-size: 14px !important; }
+  .site-header a[href^="mailto:"], .site-header a[href$="#trial"] { padding: 10px 12px !important; font-size: 14px !important; }
+}
