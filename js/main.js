@@ -134,3 +134,12 @@ document.addEventListener('click', function (e) {
   el.addEventListener('mouseleave', reset);
   el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 })();
+
+// Reviews: show 3 random reviews from the pool on each visit
+(function () {
+  var box = document.querySelector('.reviews');
+  if (!box) return;
+  var items = Array.prototype.slice.call(box.querySelectorAll('figure'));
+  for (var i = items.length - 1; i > 0; i--) { var k = Math.floor(Math.random() * (i + 1)); var t = items[i]; items[i] = items[k]; items[k] = t; }
+  items.forEach(function (f, i) { box.appendChild(f); f.hidden = i >= 3; });
+})();
