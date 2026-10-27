@@ -144,3 +144,12 @@ details.belt summary:hover { background: #F7F7F7; }
   .site-header nav { gap: 14px !important; font-size: 14px !important; }
   .site-header a[href^="mailto:"], .site-header a[href$="#trial"] { padding: 10px 12px !important; font-size: 14px !important; }
 }
+
+/* Reviews carousel */
+.reviews.rv-on { display: block !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; }
+.rv-track { display: flex; gap: 24px; transition: transform .7s ease; will-change: transform; }
+.rv-track > figure { flex: 0 0 calc((100% - (var(--per, 3) - 1) * 24px) / var(--per, 3)) !important; box-sizing: border-box; }
+.rv-dots { display: flex; gap: 8px; justify-content: center; margin-top: 18px; }
+.rv-dots button { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #C8102E; background: transparent; padding: 0; cursor: pointer; }
+.rv-dots button.is-active { background: #C8102E; }
+@media (prefers-reduced-motion: reduce) { .rv-track { transition: none; } }

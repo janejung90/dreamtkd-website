@@ -135,11 +135,48 @@ document.addEventListener('click', function (e) {
   el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 })();
 
-// Reviews: show 3 random reviews from the pool on each visit
+// Reviews carousel: 3 at a time on desktop (1 on phones), slides every 5s, random order each visit
 (function () {
   var box = document.querySelector('.reviews');
   if (!box) return;
   var items = Array.prototype.slice.call(box.querySelectorAll('figure'));
   for (var i = items.length - 1; i > 0; i--) { var k = Math.floor(Math.random() * (i + 1)); var t = items[i]; items[i] = items[k]; items[k] = t; }
-  items.forEach(function (f, i) { box.appendChild(f); f.hidden = i >= 3; });
+  box.classList.add('rv-on');
+  var track = document.createElement('div'); track.className = 'rv-track';
+  items.forEach(function (f) { f.hidden = false; track.appendChild(f); });
+  box.appendChild(track);
+  var n = items.length, idx = 0, timer = null, per = 3;
+  var dots = document.createElement('div'); dots.className = 'rv-dots';
+  box.parentNode.insertBefore(dots, box.nextSibling);
+  function perView() { return window.innerWidth <= 760 ? 1 : 3; }
+  function build() {
+    per = perView();
+    track.querySelectorAll('.rv-clone').forEach(function (c) { c.remove(); });
+    for (var c = 0; c < per; c++) { var cl = items[c].cloneNode(true); cl.classList.add('rv-clone'); cl.setAttribute('aria-hidden', 'true'); track.appendChild(cl); }
+    box.style.setProperty('--per', per);
+    dots.innerHTML = '';
+    items.forEach(function (_, d) { var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Show review ' + (d + 1)); b.onclick = function () { go(d); restart(); }; dots.appendChild(b); });
+    go(idx % n, true);
+  }
+  function go(to, instant) {
+    idx = to;
+    var step = track.children[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0);
+    track.style.transition = instant ? 'none' : '';
+    track.style.transform = 'translateX(' + (-idx * step) + 'px)';
+    Array.prototype.forEach.call(dots.children, function (b, d) { b.classList.toggle('is-active', d === idx % n); });
+  }
+  track.addEventListener('transitionend', function () { if (idx >= n) go(idx - n, true); });
+  function next() { go(idx + 1); }
+  function restart() { if (timer) clearInterval(timer); if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(next, 5000); }
+  box.addEventListener('mouseenter', function () { if (timer) clearInterval(timer); });
+  box.addEventListener('mouseleave', restart);
+  var sx = null;
+  box.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; if (timer) clearInterval(timer); }, { passive: true });
+  box.addEventListener('touchend', function (e) {
+    if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (dx < -40) next(); else if (dx > 40) go((idx % n + n - 1) % n);
+    restart();
+  }, { passive: true });
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 200); });
+  build(); restart();
 })();
