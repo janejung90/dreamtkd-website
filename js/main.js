@@ -1,4 +1,19 @@
 // Dream Taekwondo — site scripts (slideshow + request forms)
+// Analytics helper: safe no-op if Google Analytics is blocked
+function track(name, params) { try { if (window.gtag) gtag('event', name, params || {}); } catch (e) {} }
+
+// Count key clicks: email links, free-trial buttons, calendar subscribe, Google reviews
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a');
+  if (!a) return;
+  var href = a.getAttribute('href') || '';
+  if (href.indexOf('mailto:') === 0) track('email_click', { link_text: a.textContent.trim().slice(0, 60) });
+  else if (/#trial$/.test(href)) track('trial_button_click', { link_text: a.textContent.trim().slice(0, 60) });
+  else if (href.indexOf('calendar.google.com') !== -1) track('calendar_subscribe_click');
+  else if (href.indexOf('google.com/search') !== -1) track('google_reviews_click');
+  else if (href.indexOf('#book') !== -1) track('party_button_click');
+}, true);
+
 (function () {
   // ----- Mobile menu button -----
   var header = document.querySelector('.site-header');
@@ -71,6 +86,8 @@
         .then(function (r) { return r.json(); })
         .then(function (data) {
           if (data && data.success) {
+            var subj = (form.querySelector('input[name="subject"]') || {}).value || '';
+            track(/party/i.test(subj) ? 'party_request' : 'trial_request', { form_name: subj });
             form.reset();
             status.className = 'form-status is-ok';
             status.textContent = 'Thank you! We received your request and will contact you soon.';
