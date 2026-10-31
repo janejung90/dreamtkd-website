@@ -73,7 +73,7 @@ details.belt summary:hover { background: #F7F7F7; }
 
   /* Home hero */
   .hero { min-height: 560px !important; }
-  .hero-shade { background: linear-gradient(180deg, rgba(17,17,17,0.94) 0%, rgba(17,17,17,0.86) 55%, rgba(17,17,17,0.35) 80%, rgba(17,17,17,0.1) 100%) !important; }
+  .hero-shade { background: linear-gradient(180deg, rgba(17,17,17,0.78) 0%, rgba(17,17,17,0.66) 50%, rgba(17,17,17,0.3) 78%, rgba(17,17,17,0.05) 100%) !important; }
   .hero p { font-size: 16px !important; }
   .hero a { padding: 14px 18px !important; font-size: 16px !important; }
 
@@ -153,3 +153,6 @@ details.belt summary:hover { background: #F7F7F7; }
 .rv-dots button { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #C8102E; background: transparent; padding: 0; cursor: pointer; }
 .rv-dots button.is-active { background: #C8102E; }
 @media (prefers-reduced-motion: reduce) { .rv-track { transition: none; } }
+
+/* Hero text stays readable over a lighter shade */
+.hero-copy h1, .hero-copy p { text-shadow: 0 2px 14px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.5); }
